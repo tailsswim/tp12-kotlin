@@ -1,13 +1,18 @@
-def convertToInteger(liste_chaines):
-nouvelle_liste = []
-for chaine in liste_chaines:
-try:
-nombre = int(chaine)
-nouvelle_liste.append(nombre)
-except ValueError:
-print(f"Erreur : Impossible de convertir '{chaine}' en entier. Passage à la suite.")
-return nouvelle_liste
+fun convertirEnEntiers(liste: List<String>): List<Int> {
+    val listeConvertie = mutableListOf<Int>()
+    for (chaine in liste) {
+        try {
+            val entier = chaine.toInt()
+            listeConvertie.add(entier)
+        } catch (e: NumberFormatException) {
+            println("Erreur : Impossible de convertir \"$chaine\" en entier. Passage à la suite.")
+        }
+    }
+    return listeConvertie
+}
 
-liste_test = ["10", "abc", "25", "4.5", "90"]
-liste_resultat = convertToInteger(liste_test)
-print("Exercice 6 - Liste finale des entiers convertis :", liste_resultat)
+fun main() {
+    val listeChaines = listOf("10", "25", "abc", "44", "1.5", "100")
+    val resultat = convertirEnEntiers(listeChaines)
+    println("Liste des entiers convertis : $resultat")
+}

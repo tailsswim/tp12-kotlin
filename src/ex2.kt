@@ -1,16 +1,19 @@
-def countElements(liste, fonction_lambda):
-compteur = 0
-for element in liste:
-if fonction_lambda(element):
-compteur += 1
-return compteur
+fun countElements(liste: List<Int>, condition: (Int) -> Boolean): Int {
+    var compteur = 0
+    for (element in liste) {
+        if (condition(element)) {
+            compteur++
+        }
+    }
+    return compteur
+}
 
-nombres = [12, 45, 78, 23, 89, 60, 71]
+fun main() {
+    val nombres = listOf(3, 8, 15, 22, 5, 12, 30, 1)
 
-est_pair = lambda x: x % 2 == 0
-pairs_comptes = countElements(nombres, est_pair)
-print("Exercice 2 - Nombre d'éléments pairs :", pairs_comptes)
+    val nbPairs = countElements(nombres) { it % 2 == 0 }
+    val nbSuperieursA10 = countElements(nombres) { it > 10 }
 
-sup_70 = lambda x: x > 70
-sup_70_comptes = countElements(nombres, sup_70)
-print("Exercice 2 - Nombre d'éléments > 70 :", sup_70_comptes)
+    println("Nombre d'éléments pairs : $nbPairs")
+    println("Nombre d'éléments supérieurs à 10 : $nbSuperieursA10")
+}

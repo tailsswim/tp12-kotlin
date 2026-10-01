@@ -1,7 +1,13 @@
-tester_signe = lambda x: "positif" if x >= 0 else "négatif"
+fun main() {
+    val verifierSigne = fun(n: Int): Boolean { return n >= 0 }
 
-plusieurs_nombres = [12, -5, 0, -89, 43]
+    val nombres = listOf(15, -7, 0, -3, 8)
 
-print("Exercice 4 - Résultats :")
-for nb in plusieurs_nombres:
-print(f"Le nombre {nb} est {tester_signe(nb)}")
+    for (nb in nombres) {
+        if (verifierSigne(nb)) {
+            println("$nb est positif")
+        } else {
+            println("$nb est negatif")
+        }
+    }
+}

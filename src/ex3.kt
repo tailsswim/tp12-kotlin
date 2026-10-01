@@ -1,10 +1,20 @@
-def calculer(num1, num2, operation_anonyme):
-return operation_anonyme(num1, num2)
+fun calculer(a: Int, b: Int, operation: (Int, Int) -> Int): Int {
+    return operation(a, b)
+}
 
-a = 15
-b = 5
+fun main() {
+    val addition = fun(x: Int, y: Int): Int { return x + y }
+    val soustraction = fun(x: Int, y: Int): Int { return x - y }
+    val multiplication = fun(x: Int, y: Int): Int { return x * y }
+    val division = fun(x: Int, y: Int): Int { return if (y != 0) x / y else 0 }
 
-print("Exercice 3 - Addition :", calculer(a, b, lambda x, y: x + y))
-print("Exercice 3 - Soustraction :", calculer(a, b, lambda x, y: x - y))
-print("Exercice 3 - Multiplication :", calculer(a, b, lambda x, y: x * y))
-print("Exercice 3 - Division :", calculer(a, b, lambda x, y: x / y if y != 0 else "Erreur: Division par zéro"))
+    val resAdd = calculer(10, 5, addition)
+    val resSous = calculer(10, 5, soustraction)
+    val resMulti = calculer(10, 5, multiplication)
+    val resDiv = calculer(10, 5, division)
+
+    println("Addition: $resAdd")
+    println("Soustraction: $resSous")
+    println("Multiplication: $resMulti")
+    println("Division: $resDiv")
+}

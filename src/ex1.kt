@@ -1,11 +1,18 @@
-def findMax(liste, fonction_lambda):
-plus_grand = liste[0]
-for element in liste:
-plus_grand = fonction_lambda(plus_grand, element)
-return plus_grand
+fun findMax(liste: List<Int>, comparer: (Int, Int) -> Int): Int? {
+    if (liste.isEmpty()) return null
 
-le_plus_grand = lambda a, b: a if a > b else b
+    var max = liste[0]
+    for (i in 1 until liste.size) {
+        max = comparer(max, liste[i])
+    }
+    return max
+}
 
-ma_liste = [14, 52, 8, 91, 23]
-resultat_ex1 = findMax(ma_liste, le_plus_grand)
-print("Exercice 1 - Le plus grand nombre est :", resultat_ex1)
+fun main() {
+    val maListe = listOf(12, 45, 7, 89, 23, 56)
+    val lambdaMax = { a: Int, b: Int -> if (a > b) a else b }
+    val resultat = findMax(maListe, lambdaMax)
+
+    println("La liste est : $maListe")
+    println("Le plus grand nombre est : $resultat")
+}
